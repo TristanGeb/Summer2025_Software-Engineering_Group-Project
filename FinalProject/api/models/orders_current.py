@@ -5,8 +5,6 @@ from ..dependencies.database import Base
 
 class CurrentOrders(Base):
     __tablename__ = "orders_current"
-    
-    order_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    name = Column(String(256),nullable = False)
-    date = Column(Date, nullable=False, default=date.today)
-    total = Column(DECIMAL(10, 2), nullable=False)
+    temp_id =  Column(Integer, primary_key=True, index=True, autoincrement=True)
+    order_id = Column(Integer,ForeignKey("orders_all.order_id"))
+    order_history = relationship("OrderHistory",back_populates="orders_current")

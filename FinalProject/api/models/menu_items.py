@@ -13,7 +13,7 @@ class MenuItems(Base):
     calories = Column(Integer,nullable=False)
 
     
-    related_menus= Column(Integer, ForeignKey("menus.id"))
+    related_menus= Column(Integer, ForeignKey("menus.menu_id"))
     
 
 
