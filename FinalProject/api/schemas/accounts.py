@@ -30,7 +30,7 @@ class AccountUpdate(BaseModel):
     password: Optional[str] = None
 
 class Account(AccountBase):
-    account_id: int
+    id: int
     
     class Config:
         from_attributes = True

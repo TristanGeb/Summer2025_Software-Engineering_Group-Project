@@ -17,7 +17,7 @@ class OrderHistoryUpdate(BaseModel):
     total:Optional[int] = None
 
 class OrderHistory(OrderHistoryBase):
-    order_id: int
+    id: int
     
     class Config:
         from_attributes = True

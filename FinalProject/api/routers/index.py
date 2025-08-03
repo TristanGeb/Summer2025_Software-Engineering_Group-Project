@@ -1,6 +1,5 @@
-from . import orders
+from . import accounts
 
 
 def load_routes(app):
-    #app.include_router(orders.router)
-    pass
+    app.include_router(accounts.router)
