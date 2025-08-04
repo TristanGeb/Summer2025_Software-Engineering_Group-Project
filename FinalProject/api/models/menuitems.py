@@ -11,7 +11,7 @@ class MenuItems(Base):
     price = Column(DECIMAL(10, 2), nullable=False)
     food_category = Column(String(256),nullable = False)
     calories = Column(Integer,nullable=False)
-
+    #add links to resources for ingredents
     #TODO: implement related menus
     #related_menus= Column(Integer, ForeignKey("menus.menu_id"))
     

@@ -2,17 +2,15 @@
 from fastapi.testclient import TestClient
 from ..main import app
 import pytest
-from ..controllers import menu_items as controller
-from ..models import menuitems as model
-from ..models.menuitems import MenuItems as Models
+from ..controllers import resources as controller
+from ..models import resources as model
+from ..models.resources import Resource as Models
 
 # Create a test client for the app
 client = TestClient(app)
 test_data = {
-    "name":"menuItemName1",
-    "price": 1.24,
-    "food_category":"MenuItem_1_category",
-    "calories": 123
+    "name":"ResourceName1",
+    "amount_in_storage": 23
 }
 
 @pytest.fixture
@@ -20,7 +18,7 @@ def db_session(mocker):
     return mocker.Mock()
 
 
-def test_create_menuitem(db_session):
+def test_create_sample(db_session):
 
     test_object = Models(**test_data)
 
@@ -30,8 +28,6 @@ def test_create_menuitem(db_session):
     # Assertions
     assert created_test_object is not None
     assert created_test_object.name == test_data["name"]
-    assert created_test_object.price == test_data["price"]
-    assert created_test_object.food_category == test_data["food_category"]
-    assert created_test_object.calories == test_data["calories"]
+    assert created_test_object.amount_in_storage == test_data["amount_in_storage"]
     #TODO: find out if using test_data.varname is bad practice(since i am persumeing it dosnt change)
     #TODO: do all vars
