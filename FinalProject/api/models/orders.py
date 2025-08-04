@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from datetime import date
 from ..dependencies.database import Base
 
-class OrderHistory(Base):
+class Orders(Base):
     __tablename__ = "orders_all"
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String(256),nullable = False)

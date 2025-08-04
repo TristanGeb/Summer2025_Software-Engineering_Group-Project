@@ -3,20 +3,20 @@ from typing import Optional
 from datetime import datetime
 
 
-class OrderHistoryBase(BaseModel):
+class OrderBase(BaseModel):
     name : str
     date : datetime
     total: int
     
-class OrderHistoryCreate(OrderHistoryBase):
+class OrderCreate(OrderBase):
     pass
 
-class OrderHistoryUpdate(BaseModel):
+class OrderUpdate(BaseModel):
     name: Optional[str] = None
     date: Optional[datetime] = None
     total:Optional[int] = None
 
-class OrderHistory(OrderHistoryBase):
+class Order(OrderBase):
     id: int
     
     class Config:

@@ -1,15 +1,16 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from sqlalchemy.exc import SQLAlchemyError
-from ..models import orders as model
-from ..models.orders import Orders as Models
+from ..models.menuitems import MenuItems as Models
 
 
 def create(db: Session, request):
     new_item = Models(
+        id = request.id,
         name = request.name,
-        date = request.date,
-        total = request.total
+        price = request.price,
+        food_category = request.food_category,
+        calories = request.calories
     )
 
     try:

@@ -1,18 +1,13 @@
-#Sample -> Object
-#samples -> objects
-#sample -> object
-"""
 from fastapi.testclient import TestClient
 from ..main import app
 import pytest
-from ..controllers import sample as controller
-from ..models import sample as model
-from ..models.sample import Samples as Models
-
+from ..controllers import menu as controller
+from ..models import menus as model
+from ..models.menus import Menu as Models
 # Create a test client for the app
 client = TestClient(app)
 test_data = {
-    "":""
+    "menu_name":"menu_name_1"
     #TODO: add Create data
 }
 
@@ -32,4 +27,3 @@ def test_create_sample(db_session):
     assert created_test_object is not None
     #TODO: find out if using test_data.varname is bad practice(since i am persumeing it dosnt change)
     #TODO: do all vars
-"""

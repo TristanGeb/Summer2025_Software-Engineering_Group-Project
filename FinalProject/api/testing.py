@@ -20,7 +20,7 @@ app.add_middleware(
 )
 
 model_loader.index()
-indexRoute.load_routes(app)
+indexRoute.load_routes_all(app)
 
 test_data1 = {
     "name": "John Doe",

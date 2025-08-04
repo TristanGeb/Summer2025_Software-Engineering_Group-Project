@@ -6,5 +6,5 @@ from ..dependencies.database import Base
 class Menu(Base):
     __tablename__ = "menus"
     
-    menu_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     menu_name = Column(String(256),nullable = False)
