@@ -14,7 +14,7 @@ class OrderCurrentUpdate(BaseModel):
     order_id: int
 
 class OrderCurrent(OrderCurrentBase):
-    temp_id: int
+    id: int
     order_id: int
     
     class Config:

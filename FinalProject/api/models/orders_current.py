@@ -5,6 +5,10 @@ from ..dependencies.database import Base
 
 class CurrentOrders(Base):
     __tablename__ = "orders_current"
-    temp_id =  Column(Integer, primary_key=True, index=True, autoincrement=True)
-    order_id = Column(Integer,ForeignKey("orders_all.order_id"))
-    order_history = relationship("OrderHistory",back_populates="orders_current")
+    id =  Column(Integer, primary_key=True, index=True, autoincrement=True)
+    order_id = Column(Integer,ForeignKey("orders.id"))
+
+
+    order = relationship("Orders",back_populates="orders")
+    #TODO: what does back_populates actually do
+    #TODO: is it Orders or Order and what exactly is it pointing to
