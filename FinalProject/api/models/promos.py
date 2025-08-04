@@ -6,7 +6,7 @@ from ..dependencies.database import Base
 class PromoCodes(Base):
     __tablename__ = "promos"
 
-    code_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     expiry_date = Column(Date, nullable=False, default=date.today)
     
     

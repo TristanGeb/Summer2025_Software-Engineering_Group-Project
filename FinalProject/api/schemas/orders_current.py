@@ -5,8 +5,7 @@ from api.models.orders import Orders
 
 
 class OrderCurrentBase(BaseModel):
-    order_history : Orders = None
-    
+    pass
 class OrderCurrentCreate(OrderCurrentBase):
     order_id: int
 

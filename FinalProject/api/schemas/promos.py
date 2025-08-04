@@ -14,7 +14,7 @@ class PromosUpdate(BaseModel):
     expiry_date: Optional[datetime] = None
 
 class Promos(PromosBase):
-    code_id: int
+    id: int
     
     class Config:
         from_attributes = True
