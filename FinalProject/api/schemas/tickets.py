@@ -3,16 +3,17 @@ from typing import Optional
 
 
 class TicketBase(BaseModel):
-    pass
-    
+    body: str
+    account: int
 class TicketCreate(TicketBase):
     pass
 
 class TicketUpdate(BaseModel):
-    pass
+    body: Optional[str] = None
+    account: Optional[int] = None
 
 class Ticket(TicketBase):
-    tix_id: int
+    id: int
     
     class Config:
         from_attributes = True

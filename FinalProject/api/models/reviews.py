@@ -11,4 +11,5 @@ class Reviews(Base):
     date = Column(Date, nullable=False, default=date.today)
     body = Column(String(256),nullable = False)
     rating = Column(Integer, nullable=False)#betweeen 0 and 5
+    account = Column(Integer, ForeignKey("accounts.id"))
     #TODO: link to a menu item

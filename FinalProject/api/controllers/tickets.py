@@ -1,18 +1,13 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from sqlalchemy.exc import SQLAlchemyError
-from ..models import reviews as model
-from ..models.reviews import Reviews as Models
+from ..models import tickets as model
+from ..models.tickets import Tickets as Models
 
 
 def create(db: Session, request):
-    if not(0 <= request.rating <= 5):
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="rating must be an int between 0 and 5")
     new_item = Models(
-        name= request.name,
-        date = request.date,
         body = request.body,
-        rating = request.rating,
         account = request.account
     )
 

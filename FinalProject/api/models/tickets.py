@@ -6,5 +6,6 @@ from ..dependencies.database import Base
 class Tickets(Base):
     __tablename__ = "tickets"
    
-    tix_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    body = Column(String(256),nullable = False)
+    account = Column(Integer, ForeignKey("accounts.id"))
