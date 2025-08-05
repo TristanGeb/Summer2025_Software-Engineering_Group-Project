@@ -18,7 +18,6 @@ def db_session(mocker):
 
 
 def test_create_orders(db_session):
-
     test_object = Models(**test_data)
 
     # Call the create function

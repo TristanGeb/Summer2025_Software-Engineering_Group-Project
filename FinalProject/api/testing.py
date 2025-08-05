@@ -4,9 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.routers import index as indexRoute
 from api.models import model_loader
 from api.dependencies.config import conf
-from api import models
-from api import controllers
-from api.dependencies.tempdatabase import SessionLocal
+import api.printinfo as he
+import logging
 app = FastAPI()
 
 origins = ["*"]
@@ -20,22 +19,16 @@ app.add_middleware(
 )
 
 model_loader.index()
-indexRoute.load_routes_all(app)
+indexRoute.load_routes_admin(app)
 
-test_data1 = {
-    "name": "John Doe",
-    "pay_name": "John D",
-    "pay_num": "1346321343",
-    "pay_sec": "235",
-    "email": "JD@gmail.com",
-    "phone_num": "123 424 1234",
-    "address": "123 address drive",
-    "username": "JohnUserName",
-    "password": "JohnPassword"
-}
-
-session = SessionLocal()
-#account1= models.Accounts(test_data1)
-test_object1 = models.accounts.Accounts(**test_data1)
-created_test_object1 = controllers.accounts.create(session, test_object1)
-print(created_test_object1)
+#log=logging.getLogger(__name__)
+#uvicorn.run(app, host=conf.app_host, port=conf.app_port)
+import api.testingresources
+def test_1():
+    print("here")
+    #log.critical("aa")
+    #response = app.get("/accounts")
+    #print(response.json())
+    #he.showinfo(response)
+    #assert response.status_code ==
+    assert 1==2

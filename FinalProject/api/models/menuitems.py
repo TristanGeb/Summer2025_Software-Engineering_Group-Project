@@ -14,6 +14,22 @@ class MenuItems(Base):
     #add links to resources for ingredents
     #TODO: implement related menus
     #related_menus= Column(Integer, ForeignKey("menus.menu_id"))
-    
 
+def compare(self, comp):
+    if "id" in comp:
+        if self.id != comp["id"]:
+            return False
+    if "name" in comp:
+        if self.name != comp["name"]:
+            return False
+    if "price" in comp:
+        if self.price != comp["price"]:
+            return False
+    if "food_category" in comp:
+        if self.food_category != comp["food_category"]:
+            return False
+    if "calories" in comp:
+        if self.calories != comp["calories"]:
+            return False
+    return True
 

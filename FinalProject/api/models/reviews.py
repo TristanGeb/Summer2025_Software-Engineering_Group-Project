@@ -13,3 +13,25 @@ class Reviews(Base):
     rating = Column(Integer, nullable=False)#betweeen 0 and 5
     account = Column(Integer, ForeignKey("accounts.id"))
     #TODO: link to a menu item
+
+
+def compare(self, comp):
+    if "id" in comp:
+        if self.id != comp["id"]:
+            return False
+    if "name" in comp:
+        if self.name != comp["name"]:
+            return False
+    if "date" in comp:
+        if self.date != comp["date"]:
+            return False
+    if "body" in comp:
+        if self.body != comp["body"]:
+            return False
+    if "rating" in comp:
+        if self.rating != comp["rating"]:
+            return False
+    if "account" in comp:
+        if self.account != comp["account"]:
+            return False
+    return True

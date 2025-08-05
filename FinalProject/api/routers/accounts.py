@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, FastAPI, status, Response
+from fastapi import APIRouter, Depends, FastAPI, status, Response,Request
 from sqlalchemy.orm import Session
 from ..controllers import accounts as controller
 from ..schemas import accounts as schema
@@ -18,6 +18,7 @@ router = APIRouter(
 
 @router.post("/", response_model=Schema)
 def create(request: SchemaCreate, db: Session = Depends(get_db)):
+    print(request)
     return controller.create(db=db, request=request)
 
 
