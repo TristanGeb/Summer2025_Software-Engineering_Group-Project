@@ -1,9 +1,9 @@
 from fastapi.testclient import TestClient
 from ..main import app
 import pytest
-from ..controllers import logs_in as controller
+from ..controllers import logs_out as controller
 from ..models import accounts as model
-from ..models.logs_in import Login as Models
+from ..models.logs_out import Logout as Models
 from datetime import datetime
 
 # Create a test client for the app
@@ -50,4 +50,3 @@ def test_overall(db_session):
     }
     test_object4 = Models(**test_data4)
     created_test_object4 = controller.create(db_session, test_object4)
-

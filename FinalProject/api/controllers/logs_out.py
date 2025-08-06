@@ -1,36 +1,28 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from sqlalchemy.exc import SQLAlchemyError
-from ..models import logs_in as model
-from ..models.logs_in import Login as Models
-from ..models.accounts import Accounts as AccountsModel
+from ..models import logs_out as model
+from ..models.logs_out import Logout as Models
+from ..models.accounts import Accounts as AccountModel
 
 
 def create(db: Session, request):
     
 # checking BOTH entered usernames/passwords are right
-    user = db.query(AccountsModel).filter(
-        AccountsModel.username == request.username,
-        AccountsModel.password == request.password
+    account = db.query(AccountModel).filter(
+        AccountModel.username == request.username,
+        AccountModel.password == request.password,
     ).first()
     
-    if user:
+    if not account:
+        raise HTTPException(status_code=401, detail="User is not logged in.")
+    elif account:
         success = True
-        account_id = user.id
+        account_id = account.id
     else:
         success = False
         account_id = None
-        
-        failed_log = model.Login(
-            username=request.username,
-            password=request.password,
-            success=False,
-            account_id=None  # if no matching account, set to None or 0
-        )
-        
-        #add failed attempt logs
-        db.add(failed_log)
-        db.commit()
+    
         raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED, detail = "Invalid Credentials")
     
     
@@ -63,11 +55,7 @@ def read_all(db: Session):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=error)
     return result
 
-def read_succesful(db: Session):
-    return db.query(model.Login).filter(model.Login.success == True).all()
 
-def read_failed(db: Session):
-    return db.query(model.Login).filter(model.Login.success == False).all()
 
 
 
