@@ -16,7 +16,7 @@ router = APIRouter(
 )
 
 
-@router.post("/", response_model=Schema)
+@router.post("/", response_model=Schema,status_code=status.HTTP_201_CREATED)
 def create(request: SchemaCreate, db: Session = Depends(get_db)):
     return controller.create(db=db, request=request)
 

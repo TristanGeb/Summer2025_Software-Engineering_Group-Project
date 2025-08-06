@@ -9,6 +9,5 @@ class CurrentOrders(Base):
     order_id = Column(Integer,ForeignKey("all_orders.id"))
 
 
-    order = relationship("Orders",back_populates="orders")
-    #TODO: what does back_populates actually do
-    #TODO: is it Orders or Order and what exactly is it pointing to
+    order = relationship("Orders")
+ 
