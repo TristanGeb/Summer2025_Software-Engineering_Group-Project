@@ -1,6 +1,6 @@
 from . import accounts,menu_items,menu,orders
 from . import orders_current,promos,resources
-from . import reviews,tickets
+from . import reviews,tickets,logs_in, logs_out
 
 def load_routes_main(app):
     #app.include_router()
@@ -14,3 +14,5 @@ def load_routes_admin(app):
     app.include_router(promos.router)
     app.include_router(resources.router)
     app.include_router(reviews.router)
+    app.include_router(logs_in.router)
+    app.include_router(logs_out.router)
