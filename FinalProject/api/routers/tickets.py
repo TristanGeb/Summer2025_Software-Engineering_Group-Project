@@ -1,18 +1,18 @@
 from fastapi import APIRouter, Depends, FastAPI, status, Response
 from sqlalchemy.orm import Session
-from ..controllers import orders as controller
-from ..schemas import orders as schema
-from ..schemas.orders import Order as Schema
-from ..schemas.orders import OrderBase as SchemaBase
-from ..schemas.orders import OrderCreate as SchemaCreate
-from ..schemas.orders import OrderUpdate as SchemaUpdate
+from ..controllers import tickets as controller
+from ..schemas import tickets as schema
+from ..schemas.tickets import Ticket as Schema
+from ..schemas.tickets import TicketBase as SchemaBase
+from ..schemas.tickets import TicketCreate as SchemaCreate
+from ..schemas.tickets import TicketUpdate as SchemaUpdate
 
 
 from ..dependencies.database import engine, get_db
 
 router = APIRouter(
-    tags=['Orders'],
-    prefix="/orders"
+    tags=['Tickets'],
+    prefix="/tickets"
 )
 
 

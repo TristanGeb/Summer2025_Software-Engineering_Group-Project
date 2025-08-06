@@ -4,18 +4,16 @@ from pydantic import BaseModel
 
 
 class ResourceBase(BaseModel):
-    item: str
-    amount: int
-
+    name: str
+    amount_in_storage: int
 
 class ResourceCreate(ResourceBase):
     pass
 
 
 class ResourceUpdate(BaseModel):
-    item: Optional[str] = None
-    amount: Optional[int] = None
-
+    name: Optional[str] = None
+    amount_in_storage: int
 
 class Resource(ResourceBase):
     id: int

@@ -1,18 +1,18 @@
 from fastapi import APIRouter, Depends, FastAPI, status, Response
 from sqlalchemy.orm import Session
-from ..controllers import orders as controller
-from ..schemas import orders as schema
-from ..schemas.orders import Order as Schema
-from ..schemas.orders import OrderBase as SchemaBase
-from ..schemas.orders import OrderCreate as SchemaCreate
-from ..schemas.orders import OrderUpdate as SchemaUpdate
+from ..controllers import resources as controller
+from ..schemas import resources as schema
+from ..schemas.resources import Resource as Schema
+from ..schemas.resources import ResourceBase as SchemaBase
+from ..schemas.resources import ResourceCreate as SchemaCreate
+from ..schemas.resources import ResourceUpdate as SchemaUpdate
 
 
 from ..dependencies.database import engine, get_db
 
 router = APIRouter(
-    tags=['Orders'],
-    prefix="/orders"
+    tags=['Resource'],
+    prefix="/resource"
 )
 
 

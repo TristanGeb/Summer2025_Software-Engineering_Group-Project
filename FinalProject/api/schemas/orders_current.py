@@ -1,12 +1,11 @@
 from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
-from api.models.orders_all import OrderHistory
+from api.models.orders import Orders
 
 
 class OrderCurrentBase(BaseModel):
-    order_history : OrderHistory = None
-    
+    pass
 class OrderCurrentCreate(OrderCurrentBase):
     order_id: int
 
@@ -14,7 +13,7 @@ class OrderCurrentUpdate(BaseModel):
     order_id: int
 
 class OrderCurrent(OrderCurrentBase):
-    temp_id: int
+    id: int
     order_id: int
     
     class Config:

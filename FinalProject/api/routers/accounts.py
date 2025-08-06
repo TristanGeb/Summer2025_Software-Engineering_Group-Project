@@ -1,23 +1,24 @@
-from fastapi import APIRouter, Depends, FastAPI, status, Response
+from fastapi import APIRouter, Depends, FastAPI, status, Response,Request
 from sqlalchemy.orm import Session
-from ..controllers import orders as controller
-from ..schemas import orders as schema
-from ..schemas.orders import Order as Schema
-from ..schemas.orders import OrderBase as SchemaBase
-from ..schemas.orders import OrderCreate as SchemaCreate
-from ..schemas.orders import OrderUpdate as SchemaUpdate
+from ..controllers import accounts as controller
+from ..schemas import accounts as schema
+from ..schemas.accounts import Account as Schema
+from ..schemas.accounts import AccountBase as SchemaBase
+from ..schemas.accounts import AccountCreate as SchemaCreate
+from ..schemas.accounts import AccountUpdate as SchemaUpdate
 
 
 from ..dependencies.database import engine, get_db
 
 router = APIRouter(
-    tags=['Orders'],
-    prefix="/orders"
+    tags=['Accounts'],
+    prefix="/accounts"
 )
 
 
-@router.post("/", response_model=Schema)
+@router.post("/", response_model=Schema,status_code=status.HTTP_201_CREATED)
 def create(request: SchemaCreate, db: Session = Depends(get_db)):
+    print(request)
     return controller.create(db=db, request=request)
 
 

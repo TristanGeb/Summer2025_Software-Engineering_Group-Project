@@ -1,4 +1,6 @@
-from api.models import accounts,menu_items, menus, orders_all, orders_current, promos, resources, reviews, tickets
+from . import accounts, menuitems,menus,orders
+from . import orders_current,promos, resources
+from . import reviews,tickets, logs_in, logs_out
 from ..dependencies.database import engine
 from ..dependencies.database import Base
 

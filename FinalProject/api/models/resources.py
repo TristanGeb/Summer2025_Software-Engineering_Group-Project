@@ -8,7 +8,22 @@ class Resource(Base):
     __tablename__ = "resources"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    item = Column(String(100), unique=True, nullable=False)
-    amount = Column(Integer, index=True, nullable=False, server_default='0.0')
+    name = Column(String(100), unique=True, nullable=False)
+    amount_in_storage=Column(Integer, nullable=False)
 
-    recipes = relationship("Recipe", back_populates="resource")
+
+    def __repr__(self):
+        return f"(id={self.id},  name={self.name},   amount_in_storage={self.amount_in_storage}"
+
+
+def compare(self, comp):
+    if "id" in comp:
+        if self.id != comp["id"]:
+            return False
+    if "name" in comp:
+        if self.name != comp["name"]:
+            return False
+    if "amount_in_storage" in comp:
+        if self.amount_in_storage != comp["amount_in_storage"]:
+            return False
+    return True

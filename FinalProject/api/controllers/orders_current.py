@@ -1,21 +1,13 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from sqlalchemy.exc import SQLAlchemyError
-from ..models import accounts as model
-from ..models.accounts import Accounts as Models
+from ..models import orders_current as model
+from ..models.orders_current import CurrentOrders as Models
 
 
 def create(db: Session, request):
     new_item = Models(
-        name = request.name,
-        pay_name =request.pay_name,
-        pay_num = request.pay_num,
-        pay_sec = request.pay_sec,
-        email = request.email,
-        phone_num = request.phone_num,
-        address =  request.address,
-        username = request.username,
-        password = request.password
+        order_id=request.order_id
     )
 
     try:

@@ -13,7 +13,7 @@ class MenuUpdate(BaseModel):
     
 
 class Menu(MenuBase):
-    menu_id: int
+    id: int
     
     class Config:
         from_attributes = True
