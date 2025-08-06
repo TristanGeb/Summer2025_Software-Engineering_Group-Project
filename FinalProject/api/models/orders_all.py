@@ -9,3 +9,5 @@ class OrderHistory(Base):
     name = Column(String(256),nullable = False)
     date = Column(Date, nullable=False, default=date.today)
     total = Column(DECIMAL(10, 2), nullable=False)
+
+    orders_current = relationship("CurrentOrders", back_poplates = "order_history")

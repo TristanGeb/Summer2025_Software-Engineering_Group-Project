@@ -1,7 +1,7 @@
-"""from fastapi import APIRouter, Depends, FastAPI, status, Response
+from fastapi import APIRouter, Depends, FastAPI, status, Response
 from sqlalchemy.orm import Session
 from ..controllers import orders as controller
-from ..schemas import orders as schema
+from ..schemas import orders_current as schema
 from ..dependencies.database import engine, get_db
 
 router = APIRouter(
@@ -33,4 +33,13 @@ def update(item_id: int, request: schema.OrderUpdate, db: Session = Depends(get_
 @router.delete("/{item_id}")
 def delete(item_id: int, db: Session = Depends(get_db)):
     return controller.delete(db=db, item_id=item_id)
-"""
+
+
+#Endpoints to track and update Order Status
+@router.put("/status/{item_id}", response_model = schema.OrderStatusResponse)
+def update_order_status(item_id: int, request: schema.UpdateStatusRequest, db: Session = Depends(get_db)):
+    return controller.update_status(db, item_id, request.status)
+
+@router.get("/status/{item_id}", response_model = schema.OrderStatusResponse)
+def get_order_status(item_id: int, db: Session = Depends(get_db)):
+    return controller.get_status(db, item_id)

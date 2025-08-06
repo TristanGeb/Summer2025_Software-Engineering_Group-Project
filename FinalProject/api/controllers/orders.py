@@ -1,6 +1,6 @@
-"""from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
-from ..models import orders as model
+from ..models import orders_all, orders_current as model
 from sqlalchemy.exc import SQLAlchemyError
 
 
@@ -66,4 +66,19 @@ def delete(db: Session, item_id):
         error = str(e.__dict__['orig'])
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
-"""
+
+#Controller logic for order status
+def update_status(db:Session, order_id: int, new_status: str):
+    order = db.query(model.CurrentOrders).filter(model.CurrentOrders.order_id == order_id).first()
+    if not order:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Id not found!")
+    order.status = new_status
+    db.commit()
+    db.refresh(order)
+    return {"order_id": order_id, "status": order.status}
+
+def get_status(db: Session, order_id: int):
+    order = db.query(model.CurrentOrders).filter(model.CurrentOrders.order_id == order_id).first()
+    if not order:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Id not found!")
+    return {"order_id": order_id, "status": order.status}
