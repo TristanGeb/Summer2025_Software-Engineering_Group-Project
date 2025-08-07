@@ -82,3 +82,9 @@ def get_status(db: Session, order_id: int):
     if not order:
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "Id not found!")
     return {"order_id": order_id, "status": order.status}
+
+#Controller logic to see active/pending orders, meant for kitchen staff
+def read_all_active(db: Session):
+    return db.query(model.CurrentOrders).filter(model.CurrentOrders.status.in_([model.CurrentOrders.pending,
+                                                                                model.OrderStatus.preparing,
+                                                                                model.OrderStatus.ready])).all()
