@@ -4,8 +4,7 @@ from typing import Optional
 
 class MenuBase(BaseModel):
     menu_name : str
-    id: int
-    
+
 class MenuCreate(MenuBase):
     pass
 

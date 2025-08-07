@@ -18,7 +18,7 @@ class MenuItemUpdate(BaseModel):
     calories: Optional[int] = None
     menu_id: Optional[int] = None
 class MenuItem(MenuItemBase):
-    item_id: int
+    id: int
     
     class Config:
         from_attributes = True
