@@ -7,7 +7,7 @@ class MenuItemBase(BaseModel):
     price : float
     food_category: str
     calories: int
-    
+    menu_id:int
 class MenuItemCreate(MenuItemBase):
     pass
 
@@ -16,7 +16,7 @@ class MenuItemUpdate(BaseModel):
     price: Optional[float] = None
     food_category: Optional[str] = None
     calories: Optional[int] = None
-
+    menu_id: Optional[int] = None
 class MenuItem(MenuItemBase):
     item_id: int
     

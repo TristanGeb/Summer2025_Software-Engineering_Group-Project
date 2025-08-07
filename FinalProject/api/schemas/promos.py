@@ -6,7 +6,6 @@ from datetime import datetime
 
 class PromosBase(BaseModel):
    expiry_date : datetime
-    
 class PromosCreate(PromosBase):
     pass
 

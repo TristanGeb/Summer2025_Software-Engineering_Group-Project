@@ -6,8 +6,8 @@ from ..schemas.menus import Menu as Schema
 from ..schemas.menus import MenuBase as SchemaBase
 from ..schemas.menus import MenuCreate as SchemaCreate
 from ..schemas.menus import MenuUpdate as SchemaUpdate
-
-
+from ..models.menuitems import MenuItems
+from ..models.menus import Menu
 from ..dependencies.database import engine, get_db
 
 router = APIRouter(
@@ -39,3 +39,4 @@ def update(item_id: int, request: SchemaUpdate, db: Session = Depends(get_db)):
 @router.delete("/{item_id}")
 def delete(item_id: int, db: Session = Depends(get_db)):
     return controller.delete(db=db, item_id=item_id)
+
