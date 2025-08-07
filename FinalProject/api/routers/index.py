@@ -1,10 +1,11 @@
 from . import accounts,menu_items,menu,orders
 from . import orders_current,promos,resources
 from . import reviews,tickets,logs_in, logs_out
+from . import staff_order
 
-def load_routes_main(app):
+"""def load_routes_main(app):
     #app.include_router()
-    pass
+    pass"""
 def load_routes_admin(app):
     app.include_router(accounts.router)
     app.include_router(menu_items.router)
@@ -16,3 +17,5 @@ def load_routes_admin(app):
     app.include_router(reviews.router)
     app.include_router(logs_in.router)
     app.include_router(logs_out.router)
+    app.include_router(staff_order.router)
+    app.include_router(tickets.router)

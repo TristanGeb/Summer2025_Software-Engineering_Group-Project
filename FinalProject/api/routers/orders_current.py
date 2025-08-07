@@ -39,3 +39,13 @@ def update(item_id: int, request: SchemaUpdate, db: Session = Depends(get_db)):
 @router.delete("/{item_id}")
 def delete(item_id: int, db: Session = Depends(get_db)):
     return controller.delete(db=db, item_id=item_id)
+
+#Endpoints to track and update Order Status
+@router.put("/status/{item_id}", response_model = schema.OrderStatusResponse)
+def update_order_status(item_id: int, request: schema.UpdateStatus, db: Session = Depends(get_db)):
+    return controller.update_status(db, item_id, request.status)
+
+@router.get("/status/{item_id}", response_model = schema.OrderStatusResponse)
+def get_order_status(item_id: int, db: Session = Depends(get_db)):
+    return controller.get_status(db, item_id)
+
