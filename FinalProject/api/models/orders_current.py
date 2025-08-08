@@ -17,7 +17,7 @@ class CurrentOrders(Base):
     order_id = Column(Integer,ForeignKey("all_orders.id"))
     status = Column(Enum(OrderStatus), default = OrderStatus.pending, nullable = False)
 
-    order = relationship("Orders")
+    order = relationship("Orders", back_populates="current_status")
     #TODO: what does back_populates actually do
     #TODO: is it Orders or Order and what exactly is it pointing to
 

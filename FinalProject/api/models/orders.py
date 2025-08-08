@@ -10,6 +10,7 @@ class Orders(Base):
     date = Column(Date, nullable=False, default=date.today)
     total = Column(DECIMAL(10, 2), nullable=False)
 
+    current_status = relationship("CurrentOrders", back_populates="order", uselist=False)
 
 def compare(self, comp):
     if "id" in comp:
